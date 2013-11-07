@@ -6,6 +6,8 @@ STATIC_DIR = "static"
 PROJECT = "jira_alfred"
 REQUIREMENTS = "requirements.txt"
 
+all: clean mk_dirs pkgs bundle
+
 
 mk_dirs:
 	@mkdir -p \
@@ -40,10 +42,7 @@ pkgs:
 
 
 bundle:
-	@cp $(STATIC_DIR)/* $(DIST_DIR)
+	@cp -r $(STATIC_DIR)/* $(DIST_DIR)
 	@cd $(DIST_DIR); \
 		zip -r9 ../$(PROJECT).alfredworkflow * \
 			&> ../$(TEMP_DIR)/bundle_zip.log
-
-
-all: clean mk_dirs pkgs bundle
