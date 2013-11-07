@@ -49,4 +49,4 @@ bundle:
 
 certs:
 	openssl genrsa -out jira.pem 1024
- 	openssl rsa -in jira.pem -pubout -out jira.pub
+	openssl rsa -in jira.pem -pubout -out jira.pub
