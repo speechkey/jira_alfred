@@ -58,3 +58,5 @@ _build/*
 _dist/*
 _tmp/*
 *.alfredworkflow
+*.pem
+*.pub
