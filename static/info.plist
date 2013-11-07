@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>bundleid</key>
+	<string>tkte.ch.jira</string>
+	<key>connections</key>
+	<dict/>
+	<key>createdby</key>
+	<string>Tyler Kennedy</string>
+	<key>description</key>
+	<string>Uses the JIRA API for deeper integration.</string>
+	<key>disabled</key>
+	<false/>
+	<key>name</key>
+	<string>Advanced JIRA</string>
+	<key>objects</key>
+	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>0</integer>
+				<key>escaping</key>
+				<integer>0</integer>
+				<key>keyword</key>
+				<string>jj search</string>
+				<key>runningsubtext</key>
+				<string>Searching...</string>
+				<key>script</key>
+				<string>PYTHONPATH=deps.zip python external.py search {query}</string>
+				<key>title</key>
+				<string>search term</string>
+				<key>type</key>
+				<integer>0</integer>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>807CCA50-DEE2-4D42-9EB1-24B9C99C2411</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+	</array>
+	<key>readme</key>
+	<string></string>
+	<key>uidata</key>
+	<dict>
+		<key>807CCA50-DEE2-4D42-9EB1-24B9C99C2411</key>
+		<dict>
+			<key>ypos</key>
+			<real>180</real>
+		</dict>
+	</dict>
+	<key>webaddress</key>
+	<string>tkte.ch</string>
+</dict>
+</plist>
