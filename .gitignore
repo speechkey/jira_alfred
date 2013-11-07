@@ -55,4 +55,6 @@ nosetests.xml
 
 # Project cruft
 _build/*
-_unpacked/*
+_dist/*
+_tmp/*
+*.alfredworkflow
