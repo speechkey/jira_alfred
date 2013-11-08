@@ -65,7 +65,7 @@ def requires_auth(f):
 def requires_pem(f):
     @functools.wraps(f)
     def _f(self, *args, **kwargs):
-        if not os.path.isfile('jira.pem'):
+        if not self.rsa_key:
             return [
                 ({
                     'arg': 'not_used',
@@ -87,6 +87,7 @@ def requires_pem(f):
 class JiraAlfred(ScriptFilter):
     """
     Usage:
+        JiraAlfred settings
         JiraAlfred set <key> <value> [--no-set]
         JiraAlfred get <key>
         JiraAlfred search <query>
@@ -102,6 +103,8 @@ class JiraAlfred(ScriptFilter):
                 return self.sub_step_1(args)
             elif args['2']:
                 return self.sub_step_2(args)
+        elif args['settings']:
+            return self.sub_settings(args)
         elif args['search']:
             return self.sub_search(args)
 
@@ -280,10 +283,31 @@ class JiraAlfred(ScriptFilter):
             for r in results
         ]
 
+    def sub_settings(self, args):
+        """
+        Return
+        """
+        return [
+            ({
+                'arg': self.non_volatile_path
+            }, {
+                'title': 'Open JIRA Settings Folder',
+                'icon': 'icon.png'
+            })
+        ]
+
 
     @property
     def rsa_key(self):
-        with open('jira.pem', 'rb') as fin:
+        rsa_path = os.path.join(
+            self.non_volatile_path,
+            'jira.pem'
+        )
+
+        if not os.path.isfile(rsa_path):
+            return None
+
+        with open(rsa_path, 'rb') as fin:
             return fin.read()
 
     @property

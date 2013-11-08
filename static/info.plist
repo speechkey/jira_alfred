@@ -23,7 +23,18 @@
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>B4FAB1F6-9513-463B-BB6C-C603F7317569</string>
+				<string>3C74C06C-CE8E-4357-8CF2-C031E762629C</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
+		<key>769CA9DC-1DDE-4411-8485-F8549F52AF16</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>9FB10D0E-A185-491A-8726-84382F394183</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -194,23 +205,6 @@
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>escaping</key>
-				<integer>127</integer>
-				<key>script</key>
-				<string>PYTHONPATH=deps.zip python external.py set consumer_key "{query}"</string>
-				<key>type</key>
-				<integer>0</integer>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.script</string>
-			<key>uid</key>
-			<string>858E5B9A-143E-4C4C-BB7C-3BF3FE04D7E2</string>
-			<key>version</key>
-			<integer>0</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
 				<key>argumenttype</key>
 				<integer>0</integer>
 				<key>escaping</key>
@@ -232,6 +226,23 @@
 			<string>alfred.workflow.input.scriptfilter</string>
 			<key>uid</key>
 			<string>0CA55E07-F2C5-42B8-880C-E233D49E0146</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>escaping</key>
+				<integer>127</integer>
+				<key>script</key>
+				<string>PYTHONPATH=deps.zip python external.py set consumer_key "{query}"</string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>858E5B9A-143E-4C4C-BB7C-3BF3FE04D7E2</string>
 			<key>version</key>
 			<integer>0</integer>
 		</dict>
@@ -263,23 +274,6 @@
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>plusspaces</key>
-				<false/>
-				<key>url</key>
-				<string>{query}</string>
-				<key>utf8</key>
-				<true/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.openurl</string>
-			<key>uid</key>
-			<string>B4FAB1F6-9513-463B-BB6C-C603F7317569</string>
-			<key>version</key>
-			<integer>0</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
 				<key>argumenttype</key>
 				<integer>2</integer>
 				<key>escaping</key>
@@ -299,6 +293,45 @@
 			<string>alfred.workflow.input.scriptfilter</string>
 			<key>uid</key>
 			<string>20A42D4A-70F7-42FF-9490-940F2BC356CD</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>2</integer>
+				<key>escaping</key>
+				<integer>127</integer>
+				<key>keyword</key>
+				<string>jira settings</string>
+				<key>runningsubtext</key>
+				<string>Finding...</string>
+				<key>script</key>
+				<string>PYTHONPATH=deps.zip python external.py settings</string>
+				<key>subtext</key>
+				<string>Open the JIRA Alfred Settings Folder</string>
+				<key>title</key>
+				<string>JIRA Alfred Settings</string>
+				<key>type</key>
+				<integer>0</integer>
+				<key>withspace</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>769CA9DC-1DDE-4411-8485-F8549F52AF16</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict/>
+			<key>type</key>
+			<string>alfred.workflow.action.openfile</string>
+			<key>uid</key>
+			<string>9FB10D0E-A185-491A-8726-84382F394183</string>
 			<key>version</key>
 			<integer>0</integer>
 		</dict>
@@ -332,6 +365,11 @@
 			<key>ypos</key>
 			<real>540</real>
 		</dict>
+		<key>769CA9DC-1DDE-4411-8485-F8549F52AF16</key>
+		<dict>
+			<key>ypos</key>
+			<real>780</real>
+		</dict>
 		<key>807CCA50-DEE2-4D42-9EB1-24B9C99C2411</key>
 		<dict>
 			<key>ypos</key>
@@ -347,15 +385,15 @@
 			<key>ypos</key>
 			<real>300</real>
 		</dict>
-		<key>B4FAB1F6-9513-463B-BB6C-C603F7317569</key>
+		<key>9FB10D0E-A185-491A-8726-84382F394183</key>
 		<dict>
 			<key>ypos</key>
-			<real>540</real>
+			<real>780</real>
 		</dict>
 		<key>C4231067-A010-4669-9D7F-E02D8AD2B493</key>
 		<dict>
 			<key>ypos</key>
-			<real>60</real>
+			<real>50</real>
 		</dict>
 	</dict>
 	<key>webaddress</key>
