@@ -1,8 +1,5 @@
 **Note:** This workflow is in **ALPHA**! It may do horrible, horrible things!
 
-[Alfred][] is a fantastic app for OS X (similar to [Gnome Do][]) and I set
-out to create a JIRA workflow.
-
 ## Building
 
 1. Clone the repo
@@ -10,7 +7,6 @@ out to create a JIRA workflow.
    to limitations of pip) run "make all"
 3. You're done! There will be a jira_alfred.alfredworkflow file you can double
    click to install.
-
 
 ## Installing
 
