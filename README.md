@@ -113,7 +113,7 @@ complex either.
 ### Step 3 - Setup The Workflow
 
   1. Double-click the jira_alfred.alfredworkflow file to import it.
-  2. Right-click on the workflow in Alfred and select "Show In Finder"
+  2. Using Alfred, run `jira settings`
   3. Drag and drop your `jira.pem` into the folder opened in Finder.
   4. Using Alfred, run each of the following commands. You only need to do
      this once.
