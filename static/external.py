@@ -18,6 +18,7 @@ def _pure_python_rsa_sha1(base_string, rsa_private_key):
 from oauthlib.oauth1.rfc5849 import signature
 signature.sign_rsa_sha1 = _pure_python_rsa_sha1
 
+import os.path
 import urlparse
 import functools
 
@@ -26,7 +27,7 @@ from jira.client import JIRA
 from oauthlib.oauth1 import SIGNATURE_RSA
 from requests_oauthlib import OAuth1
 
-from alpy.script import ScriptFilter
+from alpy import ScriptFilter
 
 JIRA_REQUEST_TOKEN = '/plugins/servlet/oauth/request-token'
 JIRA_ACCESS_TOKEN = '/plugins/servlet/oauth/access-token'
@@ -57,6 +58,28 @@ def requires_auth(f):
                 ]
 
             return f(self, *args, **kwargs)
+
+    return _f
+
+
+def requires_pem(f):
+    @functools.wraps(f)
+    def _f(self, *args, **kwargs):
+        if not os.path.isfile('jira.pem'):
+            return [
+                ({
+                    'arg': 'not_used',
+                    'valid': 'no'
+                }, {
+                    'title': 'No jira.pem file!',
+                    'subtitle': (
+                        'You need to add a jira.pem file to this'
+                        ' workflow!'
+                    ),
+                    'icon': 'icon.png'
+                })
+            ]
+        return f(self, *args, **kwargs)
 
     return _f
 
@@ -116,6 +139,7 @@ class JiraAlfred(ScriptFilter):
             })
         ]
 
+    @requires_pem
     def sub_step_1(self, args):
         """
         Step one & two of the 3-legged OAuth1 authentication.
@@ -159,6 +183,7 @@ class JiraAlfred(ScriptFilter):
             })
         ]
 
+    @requires_pem
     def sub_step_2(self, args):
         """
         Step three of the 3-legged OAuth1 authentication.
@@ -201,6 +226,7 @@ class JiraAlfred(ScriptFilter):
             })
         ]
 
+    @requires_pem
     @requires_auth
     def sub_search(self, args):
         jira = JIRA(options={
@@ -214,9 +240,7 @@ class JiraAlfred(ScriptFilter):
         })
 
         results = jira.search_issues(
-            'text ~ "{query}"'.format(
-                query=args['<query>']
-            ),
+            args['<query>'],
             maxResults=15,
             fields=[
                 'summary',
