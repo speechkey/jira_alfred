@@ -39,7 +39,7 @@ NON_VOLATILE_PATH = (
 def _make_dir(path):
     # http://stackoverflow.com/a/600612
     try:
-        os.makedirs(path)
+        os.makedirs(path + os.sep)
     except OSError as exc:
         if exc.errno == errno.EEXIST and os.path.isdir(path):
             pass
