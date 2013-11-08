@@ -52,6 +52,17 @@
 				<string></string>
 			</dict>
 		</array>
+		<key>C4231067-A010-4669-9D7F-E02D8AD2B493</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>3C74C06C-CE8E-4357-8CF2-C031E762629C</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
 	</dict>
 	<key>createdby</key>
 	<string>Tyler Kennedy</string>
@@ -67,6 +78,33 @@
 			<key>config</key>
 			<dict>
 				<key>argumenttype</key>
+				<integer>2</integer>
+				<key>escaping</key>
+				<integer>127</integer>
+				<key>keyword</key>
+				<string>jira my</string>
+				<key>runningsubtext</key>
+				<string>Searching...</string>
+				<key>script</key>
+				<string>PYTHONPATH=deps.zip python external.py search "assignee = currentUser() and status not in (Closed, Resolved)"</string>
+				<key>title</key>
+				<string>Search for open tickets assigned to you.</string>
+				<key>type</key>
+				<integer>0</integer>
+				<key>withspace</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>C4231067-A010-4669-9D7F-E02D8AD2B493</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
 				<integer>0</integer>
 				<key>escaping</key>
 				<integer>127</integer>
@@ -75,7 +113,7 @@
 				<key>runningsubtext</key>
 				<string>Searching...</string>
 				<key>script</key>
-				<string>PYTHONPATH=deps.zip python external.py search "{query}"</string>
+				<string>PYTHONPATH=deps.zip python external.py search "text ~ \"{query}\""</string>
 				<key>subtext</key>
 				<string>Search for a specific ticket or search term.</string>
 				<key>title</key>
@@ -313,6 +351,11 @@
 		<dict>
 			<key>ypos</key>
 			<real>540</real>
+		</dict>
+		<key>C4231067-A010-4669-9D7F-E02D8AD2B493</key>
+		<dict>
+			<key>ypos</key>
+			<real>60</real>
 		</dict>
 	</dict>
 	<key>webaddress</key>
