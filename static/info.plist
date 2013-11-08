@@ -6,6 +6,17 @@
 	<string>ch.tkte.jira</string>
 	<key>connections</key>
 	<dict>
+		<key>0231F183-1644-48F8-BAF7-3BB2066961CC</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>3C74C06C-CE8E-4357-8CF2-C031E762629C</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
 		<key>0CA55E07-F2C5-42B8-880C-E233D49E0146</key>
 		<array>
 			<dict>
@@ -335,11 +346,46 @@
 			<key>version</key>
 			<integer>0</integer>
 		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>2</integer>
+				<key>escaping</key>
+				<integer>127</integer>
+				<key>keyword</key>
+				<string>jira insprint</string>
+				<key>runningsubtext</key>
+				<string>Searching...</string>
+				<key>script</key>
+				<string>PYTHONPATH=deps.zip python external.py search "assignee = currentUser()  and status not in (\"Closed\", \"Resolved\") and sprint in opensprints()"
+</string>
+				<key>subtext</key>
+				<string>Find open tickets assigned to you in the current sprint.</string>
+				<key>title</key>
+				<string>Tickets In Sprint</string>
+				<key>type</key>
+				<integer>0</integer>
+				<key>withspace</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>0231F183-1644-48F8-BAF7-3BB2066961CC</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
 	</array>
 	<key>readme</key>
 	<string></string>
 	<key>uidata</key>
 	<dict>
+		<key>0231F183-1644-48F8-BAF7-3BB2066961CC</key>
+		<dict>
+			<key>ypos</key>
+			<real>900</real>
+		</dict>
 		<key>0CA55E07-F2C5-42B8-880C-E233D49E0146</key>
 		<dict>
 			<key>ypos</key>
