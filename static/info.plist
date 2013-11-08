@@ -3,9 +3,56 @@
 <plist version="1.0">
 <dict>
 	<key>bundleid</key>
-	<string>tkte.ch.jira</string>
+	<string>ch.tkte.jira</string>
 	<key>connections</key>
-	<dict/>
+	<dict>
+		<key>0CA55E07-F2C5-42B8-880C-E233D49E0146</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>858E5B9A-143E-4C4C-BB7C-3BF3FE04D7E2</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
+		<key>20A42D4A-70F7-42FF-9490-940F2BC356CD</key>
+		<array/>
+		<key>539106BC-477B-4BD4-ADB1-BBB88C5E1A66</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>B4FAB1F6-9513-463B-BB6C-C603F7317569</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
+		<key>807CCA50-DEE2-4D42-9EB1-24B9C99C2411</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>3C74C06C-CE8E-4357-8CF2-C031E762629C</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
+		<key>923D5A8B-D17D-4721-B92C-9ACB7DDF9553</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>3D71524C-0A68-4FD9-AE04-1D386627AECB</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
+	</dict>
 	<key>createdby</key>
 	<string>Tyler Kennedy</string>
 	<key>description</key>
@@ -22,15 +69,17 @@
 				<key>argumenttype</key>
 				<integer>0</integer>
 				<key>escaping</key>
-				<integer>0</integer>
+				<integer>127</integer>
 				<key>keyword</key>
-				<string>jj search</string>
+				<string>jira search</string>
 				<key>runningsubtext</key>
 				<string>Searching...</string>
 				<key>script</key>
-				<string>PYTHONPATH=deps.zip python external.py search {query}</string>
+				<string>PYTHONPATH=deps.zip python external.py search "{query}"</string>
+				<key>subtext</key>
+				<string>Search for a specific ticket or search term.</string>
 				<key>title</key>
-				<string>search term</string>
+				<string>Search JIRA Tickets</string>
 				<key>type</key>
 				<integer>0</integer>
 				<key>withspace</key>
@@ -43,15 +92,227 @@
 			<key>version</key>
 			<integer>0</integer>
 		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>plusspaces</key>
+				<false/>
+				<key>url</key>
+				<string>{query}</string>
+				<key>utf8</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.openurl</string>
+			<key>uid</key>
+			<string>3C74C06C-CE8E-4357-8CF2-C031E762629C</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>escaping</key>
+				<integer>127</integer>
+				<key>script</key>
+				<string>PYTHONPATH=deps.zip python external.py set root "{query}"</string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>3D71524C-0A68-4FD9-AE04-1D386627AECB</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>0</integer>
+				<key>escaping</key>
+				<integer>127</integer>
+				<key>keyword</key>
+				<string>jira domain</string>
+				<key>script</key>
+				<string>PYTHONPATH=deps.zip python external.py set root "{query}" --no-set</string>
+				<key>subtext</key>
+				<string>Set the JIRA domain to use.</string>
+				<key>title</key>
+				<string>Set JIRA Domain</string>
+				<key>type</key>
+				<integer>0</integer>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>923D5A8B-D17D-4721-B92C-9ACB7DDF9553</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>escaping</key>
+				<integer>127</integer>
+				<key>script</key>
+				<string>PYTHONPATH=deps.zip python external.py set consumer_key "{query}"</string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>858E5B9A-143E-4C4C-BB7C-3BF3FE04D7E2</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>0</integer>
+				<key>escaping</key>
+				<integer>127</integer>
+				<key>keyword</key>
+				<string>jira consumer</string>
+				<key>script</key>
+				<string>PYTHONPATH=deps.zip python external.py set consumer_key "{query}" --no-set</string>
+				<key>subtext</key>
+				<string>Set the consumer_key to use when authenticating.</string>
+				<key>title</key>
+				<string>Set JIRA Consumer Key</string>
+				<key>type</key>
+				<integer>0</integer>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>0CA55E07-F2C5-42B8-880C-E233D49E0146</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>2</integer>
+				<key>escaping</key>
+				<integer>127</integer>
+				<key>keyword</key>
+				<string>jira step 1</string>
+				<key>script</key>
+				<string>PYTHONPATH=deps.zip python external.py step 1</string>
+				<key>title</key>
+				<string>JIRA Authentication Step #1</string>
+				<key>type</key>
+				<integer>0</integer>
+				<key>withspace</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>539106BC-477B-4BD4-ADB1-BBB88C5E1A66</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>plusspaces</key>
+				<false/>
+				<key>url</key>
+				<string>{query}</string>
+				<key>utf8</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.openurl</string>
+			<key>uid</key>
+			<string>B4FAB1F6-9513-463B-BB6C-C603F7317569</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>2</integer>
+				<key>escaping</key>
+				<integer>127</integer>
+				<key>keyword</key>
+				<string>jira step 2</string>
+				<key>script</key>
+				<string>PYTHONPATH=deps.zip python external.py step 2</string>
+				<key>title</key>
+				<string>JIRA Authentication Step #2</string>
+				<key>type</key>
+				<integer>0</integer>
+				<key>withspace</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>20A42D4A-70F7-42FF-9490-940F2BC356CD</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
 	</array>
 	<key>readme</key>
 	<string></string>
 	<key>uidata</key>
 	<dict>
+		<key>0CA55E07-F2C5-42B8-880C-E233D49E0146</key>
+		<dict>
+			<key>ypos</key>
+			<real>420</real>
+		</dict>
+		<key>20A42D4A-70F7-42FF-9490-940F2BC356CD</key>
+		<dict>
+			<key>ypos</key>
+			<real>660</real>
+		</dict>
+		<key>3C74C06C-CE8E-4357-8CF2-C031E762629C</key>
+		<dict>
+			<key>ypos</key>
+			<real>180</real>
+		</dict>
+		<key>3D71524C-0A68-4FD9-AE04-1D386627AECB</key>
+		<dict>
+			<key>ypos</key>
+			<real>300</real>
+		</dict>
+		<key>539106BC-477B-4BD4-ADB1-BBB88C5E1A66</key>
+		<dict>
+			<key>ypos</key>
+			<real>540</real>
+		</dict>
 		<key>807CCA50-DEE2-4D42-9EB1-24B9C99C2411</key>
 		<dict>
 			<key>ypos</key>
 			<real>180</real>
+		</dict>
+		<key>858E5B9A-143E-4C4C-BB7C-3BF3FE04D7E2</key>
+		<dict>
+			<key>ypos</key>
+			<real>420</real>
+		</dict>
+		<key>923D5A8B-D17D-4721-B92C-9ACB7DDF9553</key>
+		<dict>
+			<key>ypos</key>
+			<real>300</real>
+		</dict>
+		<key>B4FAB1F6-9513-463B-BB6C-C603F7317569</key>
+		<dict>
+			<key>ypos</key>
+			<real>540</real>
 		</dict>
 	</dict>
 	<key>webaddress</key>
