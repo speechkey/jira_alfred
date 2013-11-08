@@ -56,6 +56,8 @@ class ScriptFilter(object):
         if os.path.isfile('info.plist'):
             self._info = plistlib.readPlist('info.plist')
 
+        self.create_folders()
+
     @property
     def version(self):
         """
@@ -97,6 +99,18 @@ class ScriptFilter(object):
             self.bundleid
         )
 
+    def create_folders(self):
+        """
+        Create the volatile and non-volatile settings folders, if
+        they do not already exist.
+        """
+        if not os.path.isdir(self.non_volatile_path):
+            _make_dir(self.non_volatile_path)
+
+        if not os.path.isdir(self.volatile_path):
+            _make_dir(self.volatile_path)
+
+
     def set(self, key, value):
         """
         Set a setting by its key.
@@ -104,9 +118,6 @@ class ScriptFilter(object):
         :param key: The key of the setting to set.
         :param value: The new value of the key.
         """
-        if not os.path.isdir(self.non_volatile_path):
-            _make_dir(self.non_volatile_path)
-
         if os.path.isfile(self.config_path):
             with open(self.config_path, 'rb') as fin:
                 j = json.load(fin)

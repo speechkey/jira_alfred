@@ -285,7 +285,7 @@ class JiraAlfred(ScriptFilter):
 
     def sub_settings(self, args):
         """
-        Return
+        Return the non-volatile storage path.
         """
         return [
             ({
