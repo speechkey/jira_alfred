@@ -265,23 +265,33 @@ class JiraAlfred(ScriptFilter):
                 })
             ]
 
-        # We found at least one result.
-        return [
-            ({
-                'arg': self.get('root') + '/browse/' + r.key
-            }, {
-                'title': '{key} - {summary}'.format(
-                    key=r.key,
-                    summary=r.fields.summary
-                ),
-                'subtitle': '{status} - Assigned to {assignee}'.format(
-                    status=r.fields.status.name,
-                    assignee=r.fields.assignee.displayName
-                ),
-                'icon': 'icon.png'
-            })
-            for r in results
-        ]
+
+        # We found at least one result so lets build the list of
+        # items to return.
+        items = []
+        for r in results:
+            # Build the subtitle.
+            timbits = []
+
+            if r.fields.status and r.fields.status.name:
+                timbits.append(r.fields.status.name)
+
+            if r.fields.assignee and r.fields.assignee.displayName:
+                timbits.append(r.fields.assignee.displayName)
+
+            items.append(({
+                    'arg': self.get('root') + '/browse/' + r.key
+                }, {
+                    'title': '{key} - {summary}'.format(
+                        key=r.key,
+                        summary=r.fields.summary
+                    ),
+                    'subtitle': ' - '.join(timbits),
+                    'icon': 'icon.png'
+                })
+            )
+
+        return items
 
     def sub_settings(self, args):
         """
