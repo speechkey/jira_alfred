@@ -23,7 +23,6 @@ complex either.
   I strongly recommend creating a new key-pair that can be shared with your
   co-workers.
 
-    :::shell-session
     $ openssl genrsa -out jira.pem 1024
     $ openssl rsa -in jira.pem -pubout -out jira.pub
 
