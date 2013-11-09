@@ -43,8 +43,8 @@ complex either.
   3. Drag and drop your `jira.pem` into the folder opened in Finder.
   4. Using Alfred, run each of the following commands. You only need to do
      this once.
-    1. `jira domain (+ your JIRA domain)`
-    2. `jira consumer (+ your consumer key, entered in step #2)`
+    1. `jira set domain (+ your JIRA domain)`
+    2. `jira set consumer (+ your consumer key, entered in step #2)`
     3. `jira step 1`
     4. `jira step 2`
   5. You're done!

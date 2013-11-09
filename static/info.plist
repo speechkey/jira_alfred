@@ -430,7 +430,7 @@ fi</string>
 				<key>subtext</key>
 				<string>Search open tickets assigned to you</string>
 				<key>title</key>
-				<string>Search tickets assigned to you</string>
+				<string>My</string>
 				<key>type</key>
 				<integer>0</integer>
 				<key>withspace</key>
