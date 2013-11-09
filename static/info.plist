@@ -42,7 +42,7 @@
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>3C74C06C-CE8E-4357-8CF2-C031E762629C</string>
+				<string>394014A0-97C1-4848-B9C3-6384F66681E8</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -79,6 +79,8 @@
 				<string>Copy ticket URL to the clipboard</string>
 			</dict>
 		</array>
+		<key>858E5B9A-143E-4C4C-BB7C-3BF3FE04D7E2</key>
+		<array/>
 		<key>923D5A8B-D17D-4721-B92C-9ACB7DDF9553</key>
 		<array>
 			<dict>
@@ -88,25 +90,6 @@
 				<integer>0</integer>
 				<key>modifiersubtext</key>
 				<string></string>
-			</dict>
-		</array>
-		<key>C4231067-A010-4669-9D7F-E02D8AD2B493</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>3C74C06C-CE8E-4357-8CF2-C031E762629C</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-			</dict>
-			<dict>
-				<key>destinationuid</key>
-				<string>77B8C96A-F615-41A0-BA9F-42CD26555084</string>
-				<key>modifiers</key>
-				<integer>131072</integer>
-				<key>modifiersubtext</key>
-				<string>Copy ticket URL to the clipboard</string>
 			</dict>
 		</array>
 		<key>D0B13388-4AE8-492B-B61D-B101510762C5</key>
@@ -153,9 +136,9 @@
 				<key>script</key>
 				<string>PYTHONPATH=deps.zip python external.py settings</string>
 				<key>subtext</key>
-				<string>Open the JIRA Alfred Settings Folder</string>
+				<string>Open the Settings Folder</string>
 				<key>title</key>
-				<string>JIRA Alfred Settings</string>
+				<string>Settings</string>
 				<key>type</key>
 				<integer>0</integer>
 				<key>withspace</key>
@@ -203,13 +186,13 @@
 				<key>escaping</key>
 				<integer>127</integer>
 				<key>keyword</key>
-				<string>jira domain</string>
+				<string>jira set domain</string>
 				<key>script</key>
 				<string>PYTHONPATH=deps.zip python external.py set root "{query}" --no-set</string>
 				<key>subtext</key>
 				<string>Set the JIRA domain to use</string>
 				<key>title</key>
-				<string>Set JIRA Domain</string>
+				<string>Set Domain</string>
 				<key>type</key>
 				<integer>0</integer>
 				<key>withspace</key>
@@ -230,13 +213,13 @@
 				<key>escaping</key>
 				<integer>127</integer>
 				<key>keyword</key>
-				<string>jira consumer</string>
+				<string>jira set consumer</string>
 				<key>script</key>
 				<string>PYTHONPATH=deps.zip python external.py set consumer_key "{query}" --no-set</string>
 				<key>subtext</key>
-				<string>Set the consumer_key to use when authenticating</string>
+				<string>Set the JIRA Consumer Key to use when authenticating</string>
 				<key>title</key>
-				<string>Set JIRA Consumer Key</string>
+				<string>Set Consumer Key</string>
 				<key>type</key>
 				<integer>0</integer>
 				<key>withspace</key>
@@ -294,6 +277,23 @@
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>plusspaces</key>
+				<false/>
+				<key>url</key>
+				<string>{query}</string>
+				<key>utf8</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.openurl</string>
+			<key>uid</key>
+			<string>394014A0-97C1-4848-B9C3-6384F66681E8</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>argumenttype</key>
 				<integer>2</integer>
 				<key>escaping</key>
@@ -330,9 +330,9 @@
 				<key>script</key>
 				<string>PYTHONPATH=deps.zip python external.py search "text ~ \"{query}\""</string>
 				<key>subtext</key>
-				<string>Search for a specific ticket or search term</string>
+				<string>Search for tickets</string>
 				<key>title</key>
-				<string>Search JIRA Tickets</string>
+				<string>Search</string>
 				<key>type</key>
 				<integer>0</integer>
 				<key>withspace</key>
@@ -353,7 +353,7 @@
 				<key>escaping</key>
 				<integer>127</integer>
 				<key>keyword</key>
-				<string>jira insprint</string>
+				<string>jira in sprint</string>
 				<key>runningsubtext</key>
 				<string>Searching...</string>
 				<key>script</key>
@@ -411,7 +411,7 @@
 			<key>config</key>
 			<dict>
 				<key>argumenttype</key>
-				<integer>2</integer>
+				<integer>1</integer>
 				<key>escaping</key>
 				<integer>127</integer>
 				<key>keyword</key>
@@ -419,38 +419,16 @@
 				<key>runningsubtext</key>
 				<string>Searching...</string>
 				<key>script</key>
-				<string>PYTHONPATH=deps.zip python external.py search "assignee = currentUser() and status not in (Closed, Resolved)"</string>
+				<string>export PYTHONPATH=deps.zip
+
+if [ "{query}" = "" ] || [ "{query}" = " "]
+then
+    python external.py search "assignee = currentUser() and status not in (Closed, Resolved)"
+else
+    python external.py search "assignee = currentUser() and status not in (Closed, Resolved) and text ~ \"{query}\""
+fi</string>
 				<key>subtext</key>
-				<string>Search for open tickets assigned to you</string>
-				<key>title</key>
-				<string>Search tickets assigned to you</string>
-				<key>type</key>
-				<integer>0</integer>
-				<key>withspace</key>
-				<false/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.input.scriptfilter</string>
-			<key>uid</key>
-			<string>C4231067-A010-4669-9D7F-E02D8AD2B493</string>
-			<key>version</key>
-			<integer>0</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>argumenttype</key>
-				<integer>0</integer>
-				<key>escaping</key>
-				<integer>127</integer>
-				<key>keyword</key>
-				<string>jira my</string>
-				<key>runningsubtext</key>
-				<string>Searching...</string>
-				<key>script</key>
-				<string>PYTHONPATH=deps.zip python external.py search "assignee = currentUser() and status not in (Closed, Resolved) and text ~ \"{query}\""</string>
-				<key>subtext</key>
-				<string>Search *within* open tickets assigned to you</string>
+				<string>Search open tickets assigned to you</string>
 				<key>title</key>
 				<string>Search tickets assigned to you</string>
 				<key>type</key>
@@ -484,6 +462,11 @@
 		<dict>
 			<key>ypos</key>
 			<real>660</real>
+		</dict>
+		<key>394014A0-97C1-4848-B9C3-6384F66681E8</key>
+		<dict>
+			<key>ypos</key>
+			<real>540</real>
 		</dict>
 		<key>3C74C06C-CE8E-4357-8CF2-C031E762629C</key>
 		<dict>
@@ -530,15 +513,10 @@
 			<key>ypos</key>
 			<real>180</real>
 		</dict>
-		<key>C4231067-A010-4669-9D7F-E02D8AD2B493</key>
-		<dict>
-			<key>ypos</key>
-			<real>1140</real>
-		</dict>
 		<key>D0B13388-4AE8-492B-B61D-B101510762C5</key>
 		<dict>
 			<key>ypos</key>
-			<real>1260</real>
+			<real>1140</real>
 		</dict>
 	</dict>
 	<key>webaddress</key>
