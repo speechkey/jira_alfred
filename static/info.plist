@@ -207,7 +207,7 @@
 				<key>script</key>
 				<string>PYTHONPATH=deps.zip python external.py set root "{query}" --no-set</string>
 				<key>subtext</key>
-				<string>Set the JIRA domain to use.</string>
+				<string>Set the JIRA domain to use</string>
 				<key>title</key>
 				<string>Set JIRA Domain</string>
 				<key>type</key>
@@ -234,7 +234,7 @@
 				<key>script</key>
 				<string>PYTHONPATH=deps.zip python external.py set consumer_key "{query}" --no-set</string>
 				<key>subtext</key>
-				<string>Set the consumer_key to use when authenticating.</string>
+				<string>Set the consumer_key to use when authenticating</string>
 				<key>title</key>
 				<string>Set JIRA Consumer Key</string>
 				<key>type</key>
@@ -330,7 +330,7 @@
 				<key>script</key>
 				<string>PYTHONPATH=deps.zip python external.py search "text ~ \"{query}\""</string>
 				<key>subtext</key>
-				<string>Search for a specific ticket or search term.</string>
+				<string>Search for a specific ticket or search term</string>
 				<key>title</key>
 				<string>Search JIRA Tickets</string>
 				<key>type</key>
@@ -360,7 +360,7 @@
 				<string>PYTHONPATH=deps.zip python external.py search "assignee = currentUser()  and status not in (\"Closed\", \"Resolved\") and sprint in opensprints()"
 </string>
 				<key>subtext</key>
-				<string>Find open tickets assigned to you in the current sprint.</string>
+				<string>Find open tickets assigned to you in the current sprint</string>
 				<key>title</key>
 				<string>Tickets In Sprint</string>
 				<key>type</key>
@@ -421,9 +421,9 @@
 				<key>script</key>
 				<string>PYTHONPATH=deps.zip python external.py search "assignee = currentUser() and status not in (Closed, Resolved)"</string>
 				<key>subtext</key>
-				<string>Search for open tickets assigned to you.</string>
+				<string>Search for open tickets assigned to you</string>
 				<key>title</key>
-				<string>Search tickets assigned to you.</string>
+				<string>Search tickets assigned to you</string>
 				<key>type</key>
 				<integer>0</integer>
 				<key>withspace</key>
@@ -450,9 +450,9 @@
 				<key>script</key>
 				<string>PYTHONPATH=deps.zip python external.py search "assignee = currentUser() and status not in (Closed, Resolved) and text ~ \"{query}\""</string>
 				<key>subtext</key>
-				<string>Search *within* open tickets assigned to you.</string>
+				<string>Search *within* open tickets assigned to you</string>
 				<key>title</key>
-				<string>Search tickets assigned to you.</string>
+				<string>Search tickets assigned to you</string>
 				<key>type</key>
 				<integer>0</integer>
 				<key>withspace</key>
