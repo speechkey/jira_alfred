@@ -13,6 +13,7 @@ Currently implemented keywords:
 - `jira open` - Open JIRA in your browser.
 - `jira search [query]` - Search JIRA for tickets matching [query].
 - `jira my [query]` - Search your own tickets matching [query].
+- `jira boards [query]` - Search GreenHopper boards for [query].
 
 ## Building
 
