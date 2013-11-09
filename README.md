@@ -1,5 +1,19 @@
 **Note:** This workflow is in **ALPHA**! It may do horrible, horrible things!
 
+## Keywords
+
+Currently implemented keywords:
+
+- `jira set domain [domain]` - Set the domain for JIRA (ex:
+  https://my-company.atlassian.net)
+- `jira set consumer [key]` - Set the consumer key, created when configuring
+  Alfred on JIRA.
+- `jira step 1` - Step one of the 3-legged authentication with JIRA.
+- `jira step 2` - Step two of the 3-legged authentication with JIRA.
+- `jira open` - Open JIRA in your browser.
+- `jira search [query]` - Search JIRA for tickets matching [query].
+- `jira my [query]` - Search your own tickets matching [query].
+
 ## Building
 
 1. Clone the repo
