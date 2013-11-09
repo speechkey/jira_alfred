@@ -204,12 +204,13 @@ class ScriptFilter(object):
 
         if isinstance(result, int):
             sys.exit(result)
-        if result is None:
+        elif not result:
             print(self.to_xml([
                 ({
                     'valid': 'no'
                 }, {
                     'title': 'There were no results.',
+                    'subtitle': 'Try another query',
                     'icon': 'icon.png'
                 })
             ]))
