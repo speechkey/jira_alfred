@@ -301,7 +301,8 @@ class JiraAlfred(ScriptFilter):
             ({
                 'arg': self.non_volatile_path
             }, {
-                'title': 'Open JIRA Settings Folder',
+                'title': 'Settings',
+                'subtitle': 'Open the settings folder',
                 'icon': 'icon.png'
             })
         ]
