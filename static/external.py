@@ -1,5 +1,10 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+import re
+import os.path
+import urlparse
+import functools
+
 def _pure_python_rsa_sha1(base_string, rsa_private_key):
     """
     An alternative, pure-python RSA-SHA1 signing method, using
@@ -14,16 +19,14 @@ def _pure_python_rsa_sha1(base_string, rsa_private_key):
     return unicode(base64.b64encode(signature))
 
 # Monkey patch the built-in RSA-SHA1 signing method, since the
-# package offers no proper extension mechanism.
+# package offers no proper extension mechanism. This needs to be
+# done before anything imports oauthlib, requests_oauthlib, or
+# jira-python.
 from oauthlib.oauth1.rfc5849 import signature
 signature.sign_rsa_sha1 = _pure_python_rsa_sha1
 
-import os.path
-import urlparse
-import functools
-
 import requests
-from jira.client import JIRA
+from jira.client import JIRA, GreenHopper
 from oauthlib.oauth1 import SIGNATURE_RSA
 from requests_oauthlib import OAuth1
 
@@ -91,6 +94,7 @@ class JiraAlfred(ScriptFilter):
         JiraAlfred set <key> <value> [--no-set]
         JiraAlfred get <key>
         JiraAlfred search <query>
+        JiraAlfred boards [<query>]
         JiraAlfred step (1|2)
     """
     def main(self, args):
@@ -107,6 +111,8 @@ class JiraAlfred(ScriptFilter):
             return self.sub_settings(args)
         elif args['search']:
             return self.sub_search(args)
+        elif args['boards']:
+            return self.sub_boards(args)
 
     def sub_set(self, args):
         """
@@ -232,15 +238,7 @@ class JiraAlfred(ScriptFilter):
     @requires_pem
     @requires_auth
     def sub_search(self, args):
-        jira = JIRA(options={
-            'server': self.get('root'),
-            'verify': False
-        }, oauth={
-            'access_token': self.get('access_token'),
-            'access_token_secret': self.get('access_token_secret'),
-            'consumer_key': self.get('consumer_key'),
-            'key_cert': self.rsa_key
-        })
+        jira = self.jira()
 
         results = jira.search_issues(
             args['<query>'],
@@ -293,6 +291,51 @@ class JiraAlfred(ScriptFilter):
 
         return items
 
+    @requires_pem
+    @requires_auth
+    def sub_boards(self, args):
+        """
+        Search for GreenHopper boards.
+        """
+        gh = self.greenhopper()
+        query = args['<query>']
+
+        items = []
+        for board in gh.boards():
+            if query and not self._filter(board.name, query):
+                continue
+
+            items.append(({
+                'arg': self.get('root') + (
+                    '/secure/RapidBoard.jspa?rapidView={0}'.format(
+                        board.id
+                    )
+                )
+            }, {
+                'title': board.name,
+                'icon': 'icon.png'
+            }))
+
+        return items
+
+    @staticmethod
+    def _filter(value, query):
+        # FIXME: Words worst search. We should probably
+        #        either just explicitly allow the query
+        #        be regex or come up with something better.
+        match = re.search(
+            r'.*'.join(
+                # We prepend and append empty lists to get
+                # leading and trailing .*
+                [''] + list(query) + ['']
+            ),
+            value,
+            flags=re.I
+        )
+
+        return bool(match)
+
+
     def sub_settings(self, args):
         """
         Return the non-volatile storage path.
@@ -310,10 +353,14 @@ class JiraAlfred(ScriptFilter):
 
     @property
     def rsa_key(self):
-        rsa_path = os.path.join(
-            self.non_volatile_path,
-            'jira.pem'
-        )
+        """
+        The contents of the installed RSA key, if any.
+
+        :returns: The contents of the installed key, or None if not
+                  found.
+        :rtype: `str` or `None`
+        """
+        rsa_path = os.path.join(self.non_volatile_path, 'jira.pem')
 
         if not os.path.isfile(rsa_path):
             return None
@@ -332,6 +379,28 @@ class JiraAlfred(ScriptFilter):
     @property
     def jira_access_token(self):
         return self.get('root') + JIRA_ACCESS_TOKEN
+
+    def jira(self):
+        return JIRA(options={
+            'server': self.get('root'),
+            'verify': False
+        }, oauth={
+            'access_token': self.get('access_token'),
+            'access_token_secret': self.get('access_token_secret'),
+            'consumer_key': self.get('consumer_key'),
+            'key_cert': self.rsa_key
+        })
+
+    def greenhopper(self):
+        return GreenHopper(options={
+            'server': self.get('root'),
+            'verify': False
+        }, oauth={
+            'access_token': self.get('access_token'),
+            'access_token_secret': self.get('access_token_secret'),
+            'consumer_key': self.get('consumer_key'),
+            'key_cert': self.rsa_key
+        })
 
 
 ja = JiraAlfred()

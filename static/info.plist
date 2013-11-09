@@ -22,7 +22,7 @@
 				<key>modifiers</key>
 				<integer>131072</integer>
 				<key>modifiersubtext</key>
-				<string>Copy ticket URL to the clipboard</string>
+				<string>Copy URL to the clipboard</string>
 			</dict>
 		</array>
 		<key>0A4C6854-AFE3-443E-B0D4-4F56F69C0BC8</key>
@@ -41,7 +41,7 @@
 				<key>modifiers</key>
 				<integer>131072</integer>
 				<key>modifiersubtext</key>
-				<string></string>
+				<string>Copy URL to the clipboard</string>
 			</dict>
 		</array>
 		<key>0CA55E07-F2C5-42B8-880C-E233D49E0146</key>
@@ -79,6 +79,25 @@
 				<string></string>
 			</dict>
 		</array>
+		<key>7F2EE1C3-2E1F-4CB8-AAAB-AD7196B55349</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>3C74C06C-CE8E-4357-8CF2-C031E762629C</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>77B8C96A-F615-41A0-BA9F-42CD26555084</string>
+				<key>modifiers</key>
+				<integer>131072</integer>
+				<key>modifiersubtext</key>
+				<string>Copy URL to the clipboard</string>
+			</dict>
+		</array>
 		<key>807CCA50-DEE2-4D42-9EB1-24B9C99C2411</key>
 		<array>
 			<dict>
@@ -95,7 +114,7 @@
 				<key>modifiers</key>
 				<integer>131072</integer>
 				<key>modifiersubtext</key>
-				<string>Copy ticket URL to the clipboard</string>
+				<string>Copy URL to the clipboard</string>
 			</dict>
 		</array>
 		<key>858E5B9A-143E-4C4C-BB7C-3BF3FE04D7E2</key>
@@ -127,7 +146,7 @@
 				<key>modifiers</key>
 				<integer>131072</integer>
 				<key>modifiersubtext</key>
-				<string>Copy ticket URL to the clipboard</string>
+				<string>Copy URL to the clipboard</string>
 			</dict>
 		</array>
 	</dict>
@@ -490,6 +509,35 @@ python external.py get root</string>
 			<key>version</key>
 			<integer>0</integer>
 		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>1</integer>
+				<key>escaping</key>
+				<integer>127</integer>
+				<key>keyword</key>
+				<string>jira boards</string>
+				<key>runningsubtext</key>
+				<string>Searching...</string>
+				<key>script</key>
+				<string>PYTHONPATH=deps.zip python external.py boards "{query}"</string>
+				<key>subtext</key>
+				<string>Search GreenHopper Boards</string>
+				<key>title</key>
+				<string>Boards</string>
+				<key>type</key>
+				<integer>0</integer>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>7F2EE1C3-2E1F-4CB8-AAAB-AD7196B55349</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
 	</array>
 	<key>readme</key>
 	<string></string>
@@ -544,6 +592,11 @@ python external.py get root</string>
 		<dict>
 			<key>ypos</key>
 			<real>1260</real>
+		</dict>
+		<key>7F2EE1C3-2E1F-4CB8-AAAB-AD7196B55349</key>
+		<dict>
+			<key>ypos</key>
+			<real>1610</real>
 		</dict>
 		<key>807CCA50-DEE2-4D42-9EB1-24B9C99C2411</key>
 		<dict>
