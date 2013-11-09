@@ -260,7 +260,7 @@ class JiraAlfred(ScriptFilter):
                     'valid': 'no'
                 }, {
                     'title': 'No Results',
-                    'subtitle': 'Nothing could be found for that search term.',
+                    'subtitle': 'Nothing could be found for that search term',
                     'icon': 'icon.png'
                 })
             ]
